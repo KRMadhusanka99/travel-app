@@ -25,3 +25,5 @@ router.post("/register", async (req,res)=>{
 })
 
 //login user
+
+module.exports = router;
