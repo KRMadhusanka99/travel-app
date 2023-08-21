@@ -2,6 +2,7 @@ import * as React from "react";
 import RoomIcon from '@mui/icons-material/Room';
 import StarIcon from '@mui/icons-material/Star';
 import ReactMapGL, {Marker,Popup} from 'react-map-gl';
+import "./App.css"
 
 function App() {
   
@@ -30,14 +31,11 @@ function App() {
                 <label>Place</label><br/>
                 <h4 className="place">Galle Fort</h4><br/>
                 <label>Review</label><br/>
-                <p>Very beautiful place. I like it </p><br/>
+                <p className="des">Very beautiful place. I like it </p><br/>
                 <label>Rating</label><br/>
                 <div className="stars">
-                <StarIcon/>
-                <StarIcon/>
-                <StarIcon/>
-                <StarIcon/>
-                <StarIcon/>
+                5
+                <StarIcon className="star"/>
                 </div><br/>
                 <label>Information</label><br/>
                 <span className="username">Created by -<b>  Ramesh</b></span><br/>
