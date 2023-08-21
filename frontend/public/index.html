@@ -8,14 +8,32 @@
       content="Web site created using create-react-app"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/vmapbox-gl@2.15.0/mapbox-gl.css' rel='stylesheet' />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;600;900&display=swap" rel="stylesheet">
     <style>
       *{
-        font-family: 'Outfit', sans-serif;
         font-family: 'Poppins', sans-serif;
         margin: 0;
+        position: absolute;
+      }
+      .mapboxgl-control-container{
+        visibility: hidden;
+      }
+      .mapboxgl-popup-close-button{
+        /* z-index: -1; */
+        visibility: hidden;
+      }
+      .text{
+        background: white;
+        width: 300px;
+        height: 185px;
+        border: 0.5px solid black;
+        border-radius: 5px;
+        position: static !important;
+        padding-left: 5px;
+      }
+      .stars{
+        display: inline;
       }
     </style>
     <title>Travel Map App</title>
