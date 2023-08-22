@@ -4,12 +4,14 @@ import StarIcon from '@mui/icons-material/Star';
 import ReactMapGL, {Marker,Popup} from 'react-map-gl';
 import "./App.css";
 import axios from 'axios';
+import {format} from 'timeago.js';
+import { useState } from "react";
 
 function App() {
-  
+  const currentUser = 'madhu';
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX;
-  const [pins,setPins] = React.useState([]);
-  
+  const [pins,setPins] = useState([]);
+  const [currentPlaceId, setCurrentPlaceId] = useState(null);
   
   React.useEffect(()=>{
     const getPins = async () => {
@@ -22,6 +24,11 @@ function App() {
     };
     getPins()
   }, []);
+
+  const handleMarkerClick = (id) => {
+    setCurrentPlaceId(id);
+    console.log(id)
+  }
 
   return (
       <div className="App">
@@ -40,10 +47,16 @@ function App() {
           <>
           <Marker longitude={p.long} latitude={p.lat} anchor="bottom"
           >
-             <RoomIcon style={{ color: 'red', fontSize: '20px'}}></RoomIcon>
+             <RoomIcon style={{ color: p.username === currentUser ? 'tomato' : 'slateblue', fontSize: '20px', cursor:'pointer'}}
+             onClick={()=>handleMarkerClick(p._id)}
+             ></RoomIcon>
            </Marker>
+           
+           {p._id === currentPlaceId &&
            <Popup longitude={p.long} latitude={p.lat}
-             anchor="bottom-left" style={{maxWidth: '10px', fontSize: '14px', color:'black'}}>
+             anchor="bottom-left" style={{maxWidth: '10px', fontSize: '14px', color:'black', cursor:'pointer'}}
+             onClose={()=>setCurrentPlaceId(null)}
+             >
                <div className="text">
                  <label>Place</label><br/>
                  <h4 className="place">{p.title}</h4><br/>
@@ -56,9 +69,10 @@ function App() {
                  </div><br/>
                  <label>Information</label><br/>
                  <span className="username">Created by -<b>{p.username}</b></span><br/>
-                 <span className="date">1 hour ago</span>
+                 <span className="date">{format(p.createdAt)}</span>
                </div>
            </Popup>
+           }
            </>
         ))}
 
