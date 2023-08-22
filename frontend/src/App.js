@@ -13,7 +13,9 @@ function App() {
   const [pins,setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
-  
+  const [longitude,setLongitude] = useState('80.220978');
+  const [latitude,setLatitude] = useState('6.053519');
+
   React.useEffect(()=>{
     const getPins = async () => {
       try{
@@ -26,8 +28,10 @@ function App() {
     getPins()
   }, []);
 
-  const handleMarkerClick = (id) => {
+  const handleMarkerClick = (id,lat,long) => {
     setCurrentPlaceId(id);
+    setLongitude(long);
+    setLatitude(lat);
     //console.log(id)
   };
 
@@ -45,8 +49,8 @@ function App() {
         <ReactMapGL
         mapboxAccessToken={mapboxAccessToken}
         initialViewState={{
-          longitude: 80.220978, //79.861244,
-          latitude:  6.053519, //6.927079,
+          longitude: longitude, //79.861244,
+          latitude:  latitude, //6.927079,
           zoom:8
         }} 
         onDblClick={handleAddClick}
@@ -59,7 +63,7 @@ function App() {
           <Marker longitude={p.long} latitude={p.lat} anchor="bottom"
           >
              <RoomIcon style={{ color: p.username === currentUser ? 'tomato' : 'slateblue', fontSize: '20px', cursor:'pointer'}}
-             onClick={()=>handleMarkerClick(p._id)}
+             onClick={()=>handleMarkerClick(p._id,p.lat,p.long)}
              ></RoomIcon>
            </Marker>
            
@@ -89,7 +93,7 @@ function App() {
         {newPlace && (
         <Popup longitude={newPlace.long} latitude={newPlace.lat}
              anchor="bottom-left" style={{maxWidth: '10px', fontSize: '14px', color:'black', cursor:'pointer'}}
-             onClose={()=>setCurrentPlaceId(null)}
+             onClose={()=>setNewPlace(null)}
              >
               <div className="text">
                  <label>Place</label><br/>
