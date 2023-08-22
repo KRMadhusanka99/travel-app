@@ -103,7 +103,7 @@ function App() {
                  </div><br/>
                  <label>Information</label><br/>
                  <span className="username">Created by -<b>Ramesh</b></span><br/>
-                 <span className="date">1hour</span>
+                 <span className="date">1hour ago</span>
                </div>
            </Popup>
       )}
