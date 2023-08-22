@@ -12,7 +12,7 @@ function App() {
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX;
   const [pins,setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
-  //const [newPlace, setNewPlace] = useState(null);
+  const [newPlace, setNewPlace] = useState(null);
   
   React.useEffect(()=>{
     const getPins = async () => {
@@ -28,11 +28,16 @@ function App() {
 
   const handleMarkerClick = (id) => {
     setCurrentPlaceId(id);
-    console.log(id)
+    //console.log(id)
   };
 
   const handleAddClick = (e) =>{
-    console.log(e);
+    // alert(e.lngLat);
+    const lat = e.lngLat.lat;
+    const long = e.lngLat.lng;
+    setNewPlace({
+      lat,long
+    });
   }
 
   return (
@@ -42,10 +47,10 @@ function App() {
         initialViewState={{
           longitude: 80.220978, //79.861244,
           latitude:  6.053519, //6.927079,
-          zoom:8,
-          
-        }}  
-        style={{width: "100vw", height: "100vh",ondblclick:{handleAddClick}}}
+          zoom:8
+        }} 
+        onDblClick={handleAddClick}
+        style={{width: "100vw", height: "100vh"}}
         mapStyle="mapbox://styles/kkrmadhu1999/clllb5g5n01eb01plhhxdbv3z"
         // "mapbox://styles/kkrmadhu1999/clll5pig6005201o1g6ky7e75"
       >
@@ -58,7 +63,7 @@ function App() {
              ></RoomIcon>
            </Marker>
            
-           {p._id === currentPlaceId || 
+           {p._id === currentPlaceId ||   (
            <Popup longitude={p.long} latitude={p.lat}
              anchor="bottom-left" style={{maxWidth: '10px', fontSize: '14px', color:'black', cursor:'pointer'}}
              onClose={()=>setCurrentPlaceId(null)}
@@ -78,29 +83,30 @@ function App() {
                  <span className="date">{format(p.createdAt)}</span>
                </div>
            </Popup>
-           }
+           )}
            </>
         ))}
-        {/* <Popup longitude={} latitude={}
+        {newPlace && (
+        <Popup longitude={newPlace.long} latitude={newPlace.lat}
              anchor="bottom-left" style={{maxWidth: '10px', fontSize: '14px', color:'black', cursor:'pointer'}}
              onClose={()=>setCurrentPlaceId(null)}
              >
-               <div className="text">
+              <div className="text">
                  <label>Place</label><br/>
-                 <h4 className="place">{p.title}</h4><br/>
+                 <h4 className="place">Galle</h4><br/>
                  <label>Review</label><br/>
-                 <p className="des">{p.desc}</p><br/>
+                 <p className="des">beatiful</p><br/>
                  <label>Rating</label><br/>
                  <div className="stars">
                  5
                  <StarIcon className="star"/>
                  </div><br/>
                  <label>Information</label><br/>
-                 <span className="username">Created by -<b>{p.username}</b></span><br/>
-                 <span className="date">{format(p.createdAt)}</span>
-               </div>hello
-           </Popup> */}
-
+                 <span className="username">Created by -<b>Ramesh</b></span><br/>
+                 <span className="date">1hour</span>
+               </div>
+           </Popup>
+      )}
       </ReactMapGL>
       </div>
   );
