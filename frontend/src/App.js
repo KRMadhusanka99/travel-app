@@ -2,13 +2,14 @@ import * as React from "react";
 import RoomIcon from '@mui/icons-material/Room';
 import StarIcon from '@mui/icons-material/Star';
 import ReactMapGL, {Marker,Popup} from 'react-map-gl';
-import "./App.css"
-import axios from 'axios'
+import "./App.css";
+import axios from 'axios';
 
 function App() {
   
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX;
-  const [pins,setPins] = React.useState([])
+  const [pins,setPins] = React.useState([]);
+  
   
   React.useEffect(()=>{
     const getPins = async () => {
@@ -37,11 +38,11 @@ function App() {
       >
         {pins.map(p=>(
           <>
-          <Marker longitude={p.lat} latitude={p.long} anchor="bottom"
+          <Marker longitude={p.long} latitude={p.lat} anchor="bottom"
           >
              <RoomIcon style={{ color: 'red', fontSize: '20px'}}></RoomIcon>
            </Marker>
-           <Popup longitude={p.lat} latitude={p.long}
+           <Popup longitude={p.long} latitude={p.lat}
              anchor="bottom-left" style={{maxWidth: '10px', fontSize: '14px', color:'black'}}>
                <div className="text">
                  <label>Place</label><br/>
