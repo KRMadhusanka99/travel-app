@@ -8,7 +8,7 @@ import {format} from 'timeago.js';
 import { useState } from "react";
 
 function App() {
-  const currentUser = 'madhu';
+  const currentUser = 'Ramesh';
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX;
   const [pins,setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
@@ -27,7 +27,6 @@ function App() {
 
   const handleMarkerClick = (id) => {
     setCurrentPlaceId(id);
-    console.log(id)
   }
 
   return (
@@ -52,7 +51,7 @@ function App() {
              ></RoomIcon>
            </Marker>
            
-           {p._id === currentPlaceId &&
+           {p._id === currentPlaceId ||
            <Popup longitude={p.long} latitude={p.lat}
              anchor="bottom-left" style={{maxWidth: '10px', fontSize: '14px', color:'black', cursor:'pointer'}}
              onClose={()=>setCurrentPlaceId(null)}
