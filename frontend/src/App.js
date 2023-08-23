@@ -15,6 +15,9 @@ function App() {
   const [newPlace, setNewPlace] = useState(null);
   const [longitude,setLongitude] = useState('80.220978');
   const [latitude,setLatitude] = useState('6.053519');
+  const [title, setTile] = useState(null);
+  const [desc,setDesc] = useState(null);
+  const [rating, setRating] = useState(null);
 
   React.useEffect(()=>{
     const getPins = async () => {
