@@ -17,7 +17,7 @@ function App() {
   const [latitude,setLatitude] = useState('6.053519');
   const [title, setTile] = useState(null);
   const [desc,setDesc] = useState(null);
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState(0);
 
   React.useEffect(()=>{
     const getPins = async () => {
@@ -45,6 +45,25 @@ function App() {
     setNewPlace({
       lat,long
     });
+  }
+
+  const handleSubmit = async (e) =>{
+    e.preventDefault();
+    const newPin = {
+      username:currentUser,
+      title,
+      desc,
+      rating,
+      lat:newPlace.lat,
+      long:newPlace.long,
+    }
+    try{
+      const res = await axios.post("/pins", newPin);
+      setPins([...pins, res.data]);
+      setNewPlace(null);
+    }catch(err){
+      console.log(err)
+    }
   }
 
   return (
@@ -99,13 +118,15 @@ function App() {
              onClose={()=>setNewPlace(null)}
              >
               <div className="text">
-                 <form>
+                 <form onSubmit={handleSubmit}>
                   <label>title</label><br/>
-                  <input placeholder="Enter a title"/><br/>
+                  <input placeholder="Enter a title" 
+                    onChange={(e)=>setTile(e.target.value)}/><br/>
                   <label>Review</label><br/>
-                  <textarea placeholder="Say something about this location"/><br/>
+                  <textarea placeholder="Say something about this location"
+                    onChange={(e)=>setDesc(e.target.value)}/><br/>
                   <label>Rating</label><br/>
-                  <select>
+                  <select onChange={(e)=>setRating(e.target.value)}>
                     <option value='1'>1</option>
                     <option value='2'>2</option>
                     <option value='3'>3</option>
