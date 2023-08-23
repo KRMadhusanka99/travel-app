@@ -77,8 +77,8 @@ function App() {
         }} 
         onDblClick={handleAddClick}
         style={{width: "100vw", height: "100vh", transitionDuration:"200s"}}
-        mapStyle="mapbox://styles/kkrmadhu1999/clllb5g5n01eb01plhhxdbv3z"
-        // "mapbox://styles/kkrmadhu1999/clll5pig6005201o1g6ky7e75"
+        //mapStyle="mapbox://styles/kkrmadhu1999/clllb5g5n01eb01plhhxdbv3z"
+        mapStyle = "mapbox://styles/kkrmadhu1999/clll5pig6005201o1g6ky7e75"
       >
         {pins.map(p=>(
           <>
@@ -101,7 +101,8 @@ function App() {
                  <p className="des">{p.desc}</p><br/>
                  <label>Rating</label><br/>
                  <div className="stars">
-                 5
+                 {p.rating}
+                 {/* {Array(p.rating).fill(<StarIcon className="star"/>)} */}
                  <StarIcon className="star"/>
                  </div><br/>
                  <label>Information</label><br/>
