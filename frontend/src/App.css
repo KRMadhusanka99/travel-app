@@ -18,3 +18,37 @@
   .date{
     font-size: 10px;
   }
+ input{
+  margin-top: 3px;
+  border: none;
+  border-bottom: 1px solid grey;
+  font-size: 10px;
+ }
+ textarea{
+  margin-top: 3px;
+  border: none;
+  border-bottom: 1px solid grey;
+  width: 200px;
+  height: 18px;
+  resize: none;
+  font-size: 10px;
+ }
+ select{
+  margin-top: 6px;
+  width: 100px;
+  cursor: pointer;
+ }
+ button{
+  margin-left: 285px;
+  height: 20px;
+  cursor: pointer;
+ }
+ .submitButton{
+  margin-left: 0;
+  width: 100px;
+  height: 20px;
+  background: #00a8ff;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+ }

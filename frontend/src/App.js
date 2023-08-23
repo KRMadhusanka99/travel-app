@@ -32,7 +32,7 @@ function App() {
     setCurrentPlaceId(id);
     setLongitude(long);
     setLatitude(lat);
-    //console.log(id)
+    console.log(id)
   };
 
   const handleAddClick = (e) =>{
@@ -54,7 +54,7 @@ function App() {
           zoom:8
         }} 
         onDblClick={handleAddClick}
-        style={{width: "100vw", height: "100vh"}}
+        style={{width: "100vw", height: "100vh", transitionDuration:"200s"}}
         mapStyle="mapbox://styles/kkrmadhu1999/clllb5g5n01eb01plhhxdbv3z"
         // "mapbox://styles/kkrmadhu1999/clll5pig6005201o1g6ky7e75"
       >
@@ -96,18 +96,21 @@ function App() {
              onClose={()=>setNewPlace(null)}
              >
               <div className="text">
-                 <label>Place</label><br/>
-                 <h4 className="place">Galle</h4><br/>
-                 <label>Review</label><br/>
-                 <p className="des">beatiful</p><br/>
-                 <label>Rating</label><br/>
-                 <div className="stars">
-                 5
-                 <StarIcon className="star"/>
-                 </div><br/>
-                 <label>Information</label><br/>
-                 <span className="username">Created by -<b>Ramesh</b></span><br/>
-                 <span className="date">1hour ago</span>
+                 <form>
+                  <label>title</label><br/>
+                  <input placeholder="Enter a title"/><br/>
+                  <label>Review</label><br/>
+                  <textarea placeholder="Say something about this location"/><br/>
+                  <label>Rating</label><br/>
+                  <select>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                  </select><br/><br/>
+                  <button className="submitButton" type="submit">Add Pin</button>
+                 </form>
                </div>
            </Popup>
       )}
