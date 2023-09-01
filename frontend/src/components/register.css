@@ -1,0 +1,9 @@
+.registerContainer{
+    position: static;
+    width: 300px;
+    height: 250px;
+    padding: 50px;
+    margin-left: 50%;
+    border-radius: 10px;
+    background-color: white;
+}
