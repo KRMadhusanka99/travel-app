@@ -139,9 +139,14 @@ function App() {
                </div>
            </Popup>
       )}
-      <button className="button logout">Log out</button>
-      <button className="button login">Login</button>
-      <button className="button register">Register</button>
+      {currentUser ? (
+        <button className="button logout">Log out</button>
+      ) : (
+        <div className="buttons">
+          <button className="button login">Login</button>
+          <button className="button register">Register</button>
+        </div>  
+      )}
       </ReactMapGL>
       </div>
   );

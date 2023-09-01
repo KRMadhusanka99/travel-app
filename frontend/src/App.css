@@ -54,10 +54,9 @@
  }
 .button{
   position: static;
-  display: flex;
   margin-left: 0;
   border: none;
-  padding: 15px 10px;
+  padding: 5px 10px;
   border-radius: 5px;
   color: white;
 }
@@ -69,4 +68,9 @@
 }
 .register{
   background-color: slateblue;
+}
+.buttons, .logout{
+  position: static;
+  top: 10px;
+  right: 10px;
 }
