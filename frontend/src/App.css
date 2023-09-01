@@ -52,3 +52,21 @@
   border: none;
   border-radius: 5px;
  }
+.button{
+  position: static;
+  display: flex;
+  margin-left: 0;
+  border: none;
+  padding: 15px 10px;
+  border-radius: 5px;
+  color: white;
+}
+.logout{
+  background-color: tomato;
+}
+.login{
+  background-color: teal;
+}
+.register{
+  background-color: slateblue;
+}
